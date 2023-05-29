@@ -15,5 +15,10 @@ const content = fs.readFileSync(path.join(
 ), 'utf-8');
 
 // BEGIN
-console.log(content)
+const data = content.split("\r\n").slice(1);
+const modifiedData = data.map((element) => {
+  const modifiedElement = element.split("|").slice(1, 8).join(", ");
+  return modifiedElement;
+});
+console.log(`количество существ в таблице ${modifiedData.length}`);
 // END
